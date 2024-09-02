@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Permissions</class>
+ <widget class="QMainWindow" name="Permissions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>882</width>
+    <height>620</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Permissions</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: #e6f2ff;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>122</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>122</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+    background-color: #4c4c4c; /* 黑色暗灰色背景 */
+    border: 1px solid #555555; /* 边框颜色 */
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>124</width>
+         <height>158</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="userButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+                border: none;
+                background: transparent;
+                color: #efefef;
+                font-size: 15px;
+                padding: 10px 20px;
+ }
+QPushButton:hover { /*停留*/
+               background: lightgray;
+ }
+QPushButton:pressed { /*点击*/
+                background: gray;
+               color: white;
+}
+QPushButton:checked { /*选择*/
+                background: #54a5e3;
+                color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>用户管理</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="roleButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+                border: none;
+                background: transparent;
+                color: #efefef;
+                font-size: 15px;
+                padding: 10px 20px;
+ }
+QPushButton:hover {
+               background: lightgray;
+ }
+QPushButton:pressed {
+                background: gray;
+               color: white;
+}
+QPushButton:checked {
+                background: #54a5e3;
+                color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>角色管理</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="groupButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+                border: none;
+                background: transparent;
+                color: #efefef;
+                font-size: 15px;
+                padding: 10px 20px;
+ }
+QPushButton:hover {
+               background: lightgray;
+ }
+QPushButton:pressed {
+                background: gray;
+               color: white;
+}
+QPushButton:checked {
+                background: #54a5e3;
+                color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>组管理</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="functionButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>122</width>
+            <height>39</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+                border: none;
+                background: transparent;
+                color: #efefef;
+                font-size: 15px;
+                padding: 10px 20px;
+ }
+QPushButton:hover {
+               background: lightgray;
+ }
+QPushButton:pressed {
+                background: gray;
+               color: white;
+}
+QPushButton:checked {
+                background: #54a5e3;
+                color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>权限管理</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="showverticalLayout">
+      <item>
+       <widget class="QFrame" name="frame_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: #ffffff; /* 黑色暗灰色背景 */
+
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="usernameLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>151</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>151</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+            background-color: #ffffff; /*背景颜色*/
+}</string>
+           </property>
+           <property name="text">
+            <string>Username</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="userverticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Policy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>4</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>10</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QStackedWidget { background-color: white; }</string>
+        </property>
+        <property name="currentIndex">
+         <number>2</number>
+        </property>
+        <widget class="QWidget" name="groupPage">
+         <widget class="QTableView" name="groupTableView">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>481</width>
+            <height>401</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableView {
+    background-color: transparent; /* 背景透明 */
+    border: none; /* 取消外层边框 */
+    gridline-color: transparent; /* 隐藏网格线 */
+}
+
+QTableView::item {
+    border: none; /* 取消单元格边框 */
+    padding: 0; /* 去除单元格内边距 */
+}
+
+QHeaderView::section {
+    background-color: #a8a8a8; /* 表头背景颜色 */
+    color: black; /* 表头文字颜色 */
+    border: none; /* 取消表头边框 */
+    font-weight: bold; /* 表头文字加粗 */
+    font-size: 15px; /* 调整表头文字大小 */
+}
+</string>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+         <widget class="QPushButton" name="addGroupButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>30</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>增加组</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="addGroupPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>30</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>增加权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deleteGroupButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>100</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除组</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deleteGroupPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>100</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editGroupButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>170</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改组</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editGroupPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>170</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="searchGroupPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>240</y>
+            <width>161</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#8bd583; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>查找组权限</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="functionPage">
+         <widget class="QTableView" name="functionTableView">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>30</y>
+            <width>451</width>
+            <height>401</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableView {
+    background-color: transparent; /* 背景透明 */
+    border: none; /* 取消外层边框 */
+    gridline-color: transparent; /* 隐藏网格线 */
+}
+
+QTableView::item {
+    border: none; /* 取消单元格边框 */
+    padding: 0; /* 去除单元格内边距 */
+}
+
+QHeaderView::section {
+    background-color: #a8a8a8; /* 表头背景颜色 */
+    color: black; /* 表头文字颜色 */
+    border: none; /* 取消表头边框 */
+    font-weight: bold; /* 表头文字加粗 */
+    font-size: 15px; /* 调整表头文字大小 */
+}
+</string>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+         <widget class="QPushButton" name="addFunctionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>30</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>添加功能</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="addFunctionPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>30</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>绑定权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deleteFunctionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>100</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除功能</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deleteFunctionPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>100</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editFunctionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>170</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改功能</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editFunctionPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>170</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改绑定</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="searchFunctionPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>240</y>
+            <width>161</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#8bd583; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>查找功能权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="addPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>310</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>添加权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editPermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>310</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deletePermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>380</y>
+            <width>161</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除权限</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="userPage">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="2">
+           <widget class="QPushButton" name="deleteUserButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+            </property>
+            <property name="text">
+             <string>删除用户</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="addUserPermissionButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+            </property>
+            <property name="text">
+             <string>分配权限</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="7">
+           <widget class="QPushButton" name="ViewLogsButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>90</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color:#8bd583; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+            </property>
+            <property name="text">
+             <string>查看操作日志</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QPushButton" name="editUserPermissionButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+            </property>
+            <property name="text">
+             <string>修改权限</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QPushButton" name="deleteUserPermissionButton">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+    background-color: #df4d4d; /* 设置背景颜色为红色 */
+	color: white;
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+            </property>
+            <property name="text">
+             <string>删除权限</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="addUserButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+            </property>
+            <property name="text">
+             <string>添加用户</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QPushButton" name="editUserButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+            </property>
+            <property name="text">
+             <string>修改用户</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6">
+           <widget class="QPushButton" name="searchUserPermissionButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>85</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>85</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color:#8bd583; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+            </property>
+            <property name="text">
+             <string>查找用户权限</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="8">
+           <widget class="QTableView" name="userTableView">
+            <property name="styleSheet">
+             <string notr="true">QTableView {
+    background-color: transparent; /* 背景透明 */
+    border: none; /* 取消外层边框 */
+    gridline-color: transparent; /* 隐藏网格线 */
+}
+
+QTableView::item {
+    border: none; /* 取消单元格边框 */
+    padding: 0; /* 去除单元格内边距 */
+}
+
+QHeaderView::section {
+    background-color: #a8a8a8; /* 表头背景颜色 */
+    color: black; /* 表头文字颜色 */
+    border: none; /* 取消表头边框 */
+    font-weight: bold; /* 表头文字加粗 */
+    font-size: 15px; /* 调整表头文字大小 */
+}
+</string>
+            </property>
+            <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="rolePage">
+         <widget class="QTableView" name="roleTableView">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>481</width>
+            <height>401</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableView {
+    background-color: transparent; /* 背景透明 */
+    border: none; /* 取消外层边框 */
+    gridline-color: transparent; /* 隐藏网格线 */
+}
+
+QTableView::item {
+    border: none; /* 取消单元格边框 */
+    padding: 0; /* 去除单元格内边距 */
+}
+
+QHeaderView::section {
+    background-color: #a8a8a8; /* 表头背景颜色 */
+    color: black; /* 表头文字颜色 */
+    border: none; /* 取消表头边框 */
+    font-weight: bold; /* 表头文字加粗 */
+    font-size: 15px; /* 调整表头文字大小 */
+}
+</string>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+         <widget class="QPushButton" name="addRoleButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>30</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>添加角色</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="addRolePermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>30</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#3284e8; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>添加权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deleteRoleButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>100</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除角色</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="deleteRolePermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>100</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+    background-color: #ff5858; /* 设置背景颜色为红色 */
+	color: white;
+    border-radius: 5px; /* 按钮圆角（可选） */
+}</string>
+          </property>
+          <property name="text">
+           <string>删除权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editRoleButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>170</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改角色</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="editRolePermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>170</y>
+            <width>75</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #74b7ff; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>修改权限</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="searchRolePermissionButton">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>240</y>
+            <width>161</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color:#8bd583; /* 设置背景颜色为蓝色 */
+    color: white; /* 设置文字颜色为白色 */
+	border: none; /* 取消按钮的边框 */
+    border-radius: 5px; /* 按钮圆角 */
+}</string>
+          </property>
+          <property name="text">
+           <string>查找角色权限</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+   <zorder>frame</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>frame_2</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>882</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

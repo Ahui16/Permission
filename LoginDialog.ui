@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginDialog</class>
+ <widget class="QWidget" name="LoginDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>440</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>440</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>440</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Login</string>
+  </property>
+  <widget class="QLineEdit" name="UsernamelineEdit">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>80</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    border-radius: 8px;         /* 圆角边框 */
+}</string>
+   </property>
+   <property name="placeholderText">
+    <string>Username</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loginButton">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>180</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #00aaff;  /* 浅蓝色 */
+    border: 1px solid #87ceeb;  /* 边框颜色 */
+    border-radius: 8px;         /* 圆角边框 */
+    padding: 10px;              /* 内边距 */
+    color: #ffffff;             /* 字体颜色 */
+    font-size: 14px;            /* 字体大小 */
+}
+
+QPushButton:hover {
+    background-color: #87ceeb;  /* 悬停时颜色变深蓝色 */
+}</string>
+   </property>
+   <property name="text">
+    <string>登录</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="registerButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>220</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: transparent;   /* 背景透明 */
+    border: none;              /* 无边框 */
+    color: #b0b0b0;            /* 字体颜色，浅灰色 */
+    font-size: 12px;           /* 字体大小 */
+    font-family: Arial;        /* 字体样式 */
+    font-weight: normal;       /* 字体粗细 */
+    font-style: normal;        /* 字体样式（不斜体） */
+    padding: 5px 10px;         /* 按钮内边距 */
+	text-decoration: underline;  /*下划线*/
+}
+</string>
+   </property>
+   <property name="text">
+    <string>立即注册</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="PasswordlineEdit">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>130</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    border-radius: 8px;         /* 圆角边框 */
+}</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::EchoMode::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>Password</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>40</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    font-family: &quot;Brush Script MT&quot;, cursive; /* 设置艺术字体 */
+    font-size: 24px;                         /* 设置字体大小 */
+    font-weight: bold;                       /* 加粗字体 */
+    font-style: italic;                     /* 斜体 */
+    color: #333333;                          /* 设置字体颜色（深灰色） */
+}</string>
+   </property>
+   <property name="text">
+    <string>登录</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>220</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #b0b0b0;            /* 字体颜色，浅灰色 */
+    font-size: 12px;           /* 字体大小 */
+    font-family: Arial;        /* 字体样式 */
+    font-weight: normal;       /* 字体粗细 */
+    font-style: normal;        /* 字体样式（不斜体） */
+    padding: 5px 10px;         /* 按钮内边距 */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>没有账号？</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
