@@ -2,7 +2,7 @@
 #include "ui_MainForm.h"
 #include "Permissions.h"
 
-Permissions::Permissions(int id, const QString& username, int level, QWidget *parent)
+Permissions::Permissions(int id, const QString& username, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Permissions)
     , userPlugin(nullptr)
@@ -10,23 +10,14 @@ Permissions::Permissions(int id, const QString& username, int level, QWidget *pa
     , rolePlugin(nullptr)
     , functionPlugin(nullptr)
     , name(username)
-    , userlevel(level)
     , userid(id)
 {
     ui->setupUi(this);
     setupDatabase();
     setupConnections();
-    if(userlevel >= 1)  loadUserPlugin();  // 加载用户插件
-    if(userlevel >= 2){
-        loadGroupPlugin();  // 加载组插件
-        loadRolePlugin();  // 加载角色插件
-        loadFunctionPlugin();  // 加载功能插件
-    }
-    if(userlevel >= 3) qDebug() << "运维";
-    if(userlevel >= 4) qDebug() << "管理员";
+    Menu();
     ui->userButton->setChecked(true);
     switchToUserPage();
-
 }
 Permissions::~Permissions()
 {
@@ -134,7 +125,7 @@ void Permissions::handleButtonClick()
             }
             else button->setChecked(true);
         }
-        if (clickedButton == ui->userButton)switchToUserPage();
+        if (clickedButton == ui->userButton) switchToUserPage();
         else if (clickedButton == ui->roleButton) switchToRolePage();
         else if (clickedButton == ui->groupButton) switchToGroupPage();
         else if (clickedButton == ui->functionButton) switchToFunctionPage();
@@ -148,10 +139,6 @@ void Permissions::setupConnections()
     connect(ui->roleButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
     connect(ui->groupButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
     connect(ui->functionButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
-    ui->userButton->setCheckable(true);
-    ui->roleButton->setCheckable(true);
-    ui->groupButton->setCheckable(true);
-    ui->functionButton->setCheckable(true);
     // 用户界面按钮
     connect(ui->addUserButton, &QPushButton::clicked, this, &Permissions::addUser);
     connect(ui->addUserPermissionButton, &QPushButton::clicked, this, &Permissions::addUserPermission);
@@ -191,11 +178,98 @@ void Permissions::setupConnections()
     // 操作日志
     connect(ui->ViewLogsButton, &QPushButton::clicked, this, &Permissions::ViewLogs);
     // 显示当前用户
-    ui->usernameLabel->setFixedWidth(151); // 设置固定宽度
-    ui->usernameLabel->setWordWrap(false); // 确保不换行
     QFontMetrics fm(ui->usernameLabel->font());
     QString elidedText = fm.elidedText("欢迎, 用户" + name, Qt::ElideRight, ui->usernameLabel->width());
     ui->usernameLabel->setText(elidedText);
+}
+// 界面配置
+void Permissions::Menu()
+{
+    QList<QString> functions;
+    QSqlQuery query;
+    query.prepare(R"(
+        SELECT DISTINCT f.FunctionName
+        FROM Functions f
+        JOIN Permission_Function pf ON f.FunctionID = pf.FunctionID
+        JOIN Permissions p ON p.PermissionID = pf.PermissionID
+        JOIN User_Permissions up ON up.PermissionID = p.PermissionID
+        JOIN Users u ON u.UserID = up.UserID
+        WHERE u.username = :username
+        AND (f.Description = '按钮' OR f.Description = '菜单')
+    )");
+    query.bindValue(":username", name);
+
+    if (!query.exec()) {
+        QMessageBox::critical(this, "错误", query.lastError().text());
+        qDebug() << "操作错误";
+        return;
+    }
+
+    while (query.next()) {
+        functions.append(query.value(0).toString());
+    }
+    ui->userButton->setEnabled(functions.contains("用户管理"));
+    ui->roleButton->setEnabled(functions.contains("角色管理"));
+    ui->groupButton->setEnabled(functions.contains("组别管理"));
+    ui->functionButton->setEnabled(functions.contains("功能管理"));
+
+    if(functions.contains("用户管理")) loadUserPlugin();
+    ui->addUserButton->setVisible(functions.contains("添加用户"));
+    ui->addUserPermissionButton->setVisible(functions.contains("添加用户权限"));
+    ui->deleteUserButton->setVisible(functions.contains("删除用户"));
+    ui->deleteUserPermissionButton->setVisible(functions.contains("删除用户权限"));
+    ui->editUserButton->setVisible(functions.contains("修改用户"));
+    ui->editUserPermissionButton->setVisible(functions.contains("修改用户权限"));
+    ui->searchUserPermissionButton->setVisible(functions.contains("查找用户权限"));
+
+    if(functions.contains("角色管理")) loadRolePlugin();
+    ui->addRoleButton->setVisible(functions.contains("添加角色"));
+    ui->addRolePermissionButton->setVisible(functions.contains("添加角色权限"));
+    ui->deleteRoleButton->setVisible(functions.contains("删除角色"));
+    ui->deleteRolePermissionButton->setVisible(functions.contains("删除角色权限"));
+    ui->editRoleButton->setVisible(functions.contains("修改角色"));
+    ui->editRolePermissionButton->setVisible(functions.contains("修改角色权限"));
+    ui->searchRolePermissionButton->setVisible(functions.contains("查找角色权限"));
+
+    if(functions.contains("组别管理")) loadGroupPlugin();
+    ui->addGroupButton->setVisible(functions.contains("添加组别"));
+    ui->addGroupPermissionButton->setVisible(functions.contains("添加组别权限"));
+    ui->deleteGroupButton->setVisible(functions.contains("删除组别"));
+    ui->deleteGroupPermissionButton->setVisible(functions.contains("删除组别权限"));
+    ui->editGroupButton->setVisible(functions.contains("修改组别"));
+    ui->editGroupPermissionButton->setVisible(functions.contains("修改组别权限"));
+    ui->searchGroupPermissionButton->setVisible(functions.contains("查找组别权限"));
+
+    if(functions.contains("功能管理")) loadFunctionPlugin();
+    ui->addFunctionButton->setVisible(functions.contains("添加功能"));
+    ui->addFunctionPermissionButton->setVisible(functions.contains("添加功能权限"));
+    ui->deleteFunctionButton->setVisible(functions.contains("删除功能"));
+    ui->deleteFunctionPermissionButton->setVisible(functions.contains("删除功能权限"));
+    ui->editFunctionButton->setVisible(functions.contains("修改功能"));
+    ui->editFunctionPermissionButton->setVisible(functions.contains("修改功能权限"));
+    ui->searchFunctionPermissionButton->setVisible(functions.contains("查找功能权限"));
+
+    ui->addPermissionButton->setVisible(functions.contains("添加权限"));
+    ui->deletePermissionButton->setVisible(functions.contains("删除权限"));
+    ui->editPermissionButton->setVisible(functions.contains("修改权限"));
+
+    ui->ViewLogsButton->setVisible(functions.contains("查看操作日志"));
+
+    // ui->addUserButton->setVisible(false);
+    // ui->addUserButton->setEnabled(false);
+    // ui->deleteUserButton->setVisible(false);
+    // ui->editUserButton->setVisible(false);
+
+
+    // ui->userButton->setVisible(false);
+    // ui->roleButton->setVisible(false);
+    // ui->groupButton->setVisible(false);
+    // ui->functionButton->setVisible(false);
+
+    // ui->userButton->setEnabled(false);
+    // ui->roleButton->setEnabled(false);
+    // ui->groupButton->setEnabled(false);
+    // ui->functionButton->setEnabled(false);
 }
 // 界面切换
 void Permissions::switchToUserPage()
@@ -577,7 +651,7 @@ void Permissions::ViewLogs()
     QComboBox *resultComboBox = new QComboBox();
     resultComboBox->addItems({"所有", "成功", "失败"});
     QComboBox *actionComboBox = new QComboBox();
-    actionComboBox->addItems({"所有", "添加", "修改", "删除", "查找"});
+    actionComboBox->addItems({"所有", "添加", "修改", "删除", "查找", "注册", "登录"});
     QDateEdit *startDateEdit = new QDateEdit();
     QDateEdit *endDateEdit = new QDateEdit();
     QDate today = QDate::currentDate();
@@ -598,11 +672,6 @@ void Permissions::ViewLogs()
     formLayout->addWidget(filterButton);
     formLayout->addRow(tableView);
 
-    if (userlevel == 1) {   //普通用户只能查看自己的操作
-        usernameEdit->setEnabled(false);
-        usernameEdit->setText(name);
-    }
-
     connect(filterButton, &QPushButton::clicked, this, [=]() {
         QString username = usernameEdit->text().trimmed();
         QString functionName = functionNameEdit->text().trimmed();
@@ -613,13 +682,7 @@ void Permissions::ViewLogs()
         QString queryStr = "SELECT FunctionName, Username, Result, Actions, Timestamp, Description FROM UserLogs WHERE 1=1";
 
         if (!functionName.isEmpty()) queryStr += " AND FunctionName = :functionName";
-        if (userlevel != 1) {
-            if (!username.isEmpty()) {
-                queryStr += " AND Username = :username";
-            }
-        } else {
-            queryStr += " AND Username = :username";
-        }
+        if (!username.isEmpty()) queryStr += " AND Username = :username";
         if (result != "所有") queryStr += " AND Result = :result";
         if (action != "所有") queryStr += " AND Actions = :action";
         if (startDate.isValid()) queryStr += " AND Timestamp >= :startDate";
@@ -628,13 +691,7 @@ void Permissions::ViewLogs()
         QSqlQuery query;
         query.prepare(queryStr);
         if (!functionName.isEmpty()) query.bindValue(":functionName", functionName);
-        if (userlevel != 1) {
-            if (!username.isEmpty()) {
-                query.bindValue(":username", username);
-            }
-        } else {
-            query.bindValue(":username", name);  // 用户等级为1时使用当前用户名
-        }
+        if (!username.isEmpty()) query.bindValue(":username", username);
         if (result != "所有") query.bindValue(":result", result);
         if (action != "所有") query.bindValue(":action", action);
         if (startDate.isValid()) query.bindValue(":startDate", startDate.toString("yyyy-MM-dd"));

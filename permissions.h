@@ -33,7 +33,7 @@ class Permissions : public QMainWindow {
     Q_OBJECT
 
 public:
-    Permissions(int id, const QString& username, int level = 1, QWidget *parent = nullptr);
+    Permissions(int id, const QString& username, QWidget *parent = nullptr);
     ~Permissions();
     void loadUserPlugin();  // 加载用户插件
     void loadGroupPlugin();  // 加载组插件
@@ -96,7 +96,6 @@ private:
     // 用户信息
     QString name;
     int userid;
-    int userlevel;
 
     void setupDatabase();
     void setupConnections();
@@ -106,6 +105,7 @@ private:
     void showFunctionPage();
     void writeLog(const int &id, const QString &username, const QString &functionName,
                   const QString &result, const QString &actions, const QString &description = "");
+    void Menu();
 };
 
 #endif // PERMISSIONS_H

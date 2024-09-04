@@ -48,23 +48,22 @@ void LoginDialog::loginButton()
     if (query.next()) {
         QString storedPasswordHash = query.value(0).toString().trimmed();
         if (storedPasswordHash == password) {
+            int id;
             QSqlQuery query1;
-            int level, id;
-            query1.prepare("SELECT PermissionLevel FROM Users WHERE Username = :username");
+            query1.prepare("SELECT UserID FROM Users WHERE Username = :username");
             query1.bindValue(":username", username);
-            if (!query1.exec()) {
-                QMessageBox::critical(this, "查询错误", "查询失败: " + query1.lastError().text());
-                return;
-            }
-            if (query1.next()) level = query1.value(0).toInt();
-            else level = 1;
+            if (query1.exec() && query1.next()) {
+                id = query1.value(0).toInt();
+                // 写入日志
+                QString description = QString("用户 %1 登录系统").arg(username);
+                query1.prepare("INSERT INTO UserLogs (UserID, Username, FunctionName, Result, Actions, Description) "
+                              "VALUES (:userid, :username, '用户登录', '成功', '登录', :description)");
+                query1.bindValue(":userid", id);
+                query1.bindValue(":username", username);
+                query1.bindValue(":description", description);
+                if (query1.exec() && query1.next()) qDebug() << "插入错误";
 
-            QSqlQuery query2;
-            query2.prepare("SELECT UserID FROM Users WHERE Username = :username");
-            query2.bindValue(":username", username);
-            if (query2.exec() && query2.next()) {
-                id = query2.value(0).toInt();
-                Permissions *permissions = new Permissions(id, username, level);
+                Permissions *permissions = new Permissions(id, username);
                 permissions->show();
                 QScreen *screen = QGuiApplication::primaryScreen();
                 QRect screenGeometry = screen->geometry();
@@ -136,6 +135,19 @@ void LoginDialog::registerButton()
             QMessageBox::warning(&dialog, "Register Error", "用户名已存在！");
         } else {
             QMessageBox::information(&dialog, "Register Success", "注册成功！");
+            QSqlQuery query;
+            QString description = QString("注册用户 %1").arg(username);
+            int id = -1;
+            query.prepare("SELECT UserID FROM Users WHERE Username = :username");
+            query.bindValue(":username", username);
+            if (query.exec() && query.next())
+                id = query.value(0).toInt();
+            query.prepare("INSERT INTO UserLogs (UserID, Username, FunctionName, Result, Actions, Description) "
+                          "VALUES (:userid, :username, '用户注册', '成功', '注册', :description)");
+            query.bindValue(":userid", id);
+            query.bindValue(":username", username);
+            query.bindValue(":description", description);
+            if (query.exec() && query.next()) qDebug() << "插入错误";
             dialog.accept();
         }
     });
