@@ -9,6 +9,7 @@ Permissions::Permissions(int id, const QString& username, QWidget *parent)
     , groupPlugin(nullptr)
     , rolePlugin(nullptr)
     , functionPlugin(nullptr)
+    , menuPlugin(nullptr)
     , name(username)
     , userid(id)
 {
@@ -83,14 +84,14 @@ void Permissions::loadGroupPlugin()
 // 加载角色插件函数
 void Permissions::loadRolePlugin()
 {
-    QPluginLoader loader("RolePlugin.dll");  // 指定插件路径
+    QPluginLoader loader("RolePlugin.dll");
     QObject *plugin = loader.instance();
     if (plugin) {
         rolePlugin = qobject_cast<IEntityPlugin*>(plugin);
         if (!rolePlugin) {
             QMessageBox::critical(this, "Plugin Error", "Failed to cast plugin to IEntityPlugin.");
         } else {
-            rolePlugin->setDatabase(QSqlDatabase::database());  // 设置数据库连接
+            rolePlugin->setDatabase(QSqlDatabase::database());
         }
     } else {
         QMessageBox::critical(this, "Plugin Error", "Failed to load RolePlugin: " + loader.errorString());
@@ -99,17 +100,33 @@ void Permissions::loadRolePlugin()
 // 加载功能插件函数
 void Permissions::loadFunctionPlugin()
 {
-    QPluginLoader loader("FunctionPlugin.dll");  // 指定插件路径
+    QPluginLoader loader("FunctionPlugin.dll");
     QObject *plugin = loader.instance();
     if (plugin) {
         functionPlugin = qobject_cast<IEntityPlugin*>(plugin);
         if (!functionPlugin) {
             QMessageBox::critical(this, "Plugin Error", "Failed to cast plugin to IEntityPlugin.");
         } else {
-            functionPlugin->setDatabase(QSqlDatabase::database());  // 设置数据库连接
+            functionPlugin->setDatabase(QSqlDatabase::database());
         }
     } else {
         QMessageBox::critical(this, "Plugin Error", "Failed to load FunctionPlugin: " + loader.errorString());
+    }
+}
+// 加载菜单插件函数
+void Permissions::loadMenuPlugin()
+{
+    QPluginLoader loader("MenuPlugin.dll");
+    QObject *plugin = loader.instance();
+    if (plugin) {
+        menuPlugin = qobject_cast<IEntityPlugin*>(plugin);
+        if (!menuPlugin) {
+            QMessageBox::critical(this, "Plugin Error", "Failed to cast plugin to IEntityPlugin.");
+        } else {
+            menuPlugin->setDatabase(QSqlDatabase::database());
+        }
+    } else {
+        QMessageBox::critical(this, "Plugin Error", "Failed to load MenuPlugin: " + loader.errorString());
     }
 }
 // 按钮光亮提示
@@ -118,7 +135,7 @@ void Permissions::handleButtonClick()
     QPushButton *clickedButton = qobject_cast<QPushButton*>(sender());
 
     if (clickedButton) {
-        QList<QPushButton*> buttons = {ui->userButton, ui->roleButton, ui->groupButton, ui->functionButton};
+        QList<QPushButton*> buttons = {ui->userButton, ui->roleButton, ui->groupButton, ui->functionButton, ui->menuButton};
         for (QPushButton *button : buttons) {
             if (button != clickedButton) {
                 button->setChecked(false);
@@ -129,6 +146,7 @@ void Permissions::handleButtonClick()
         else if (clickedButton == ui->roleButton) switchToRolePage();
         else if (clickedButton == ui->groupButton) switchToGroupPage();
         else if (clickedButton == ui->functionButton) switchToFunctionPage();
+        else if (clickedButton == ui->menuButton) switchToMenuPage();
     }
 }
 // 按钮绑定
@@ -139,6 +157,7 @@ void Permissions::setupConnections()
     connect(ui->roleButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
     connect(ui->groupButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
     connect(ui->functionButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
+    connect(ui->menuButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
     // 用户界面按钮
     connect(ui->addUserButton, &QPushButton::clicked, this, &Permissions::addUser);
     connect(ui->addUserPermissionButton, &QPushButton::clicked, this, &Permissions::addUserPermission);
@@ -175,6 +194,14 @@ void Permissions::setupConnections()
     connect(ui->addPermissionButton, &QPushButton::clicked, this, &Permissions::addPermission);
     connect(ui->deletePermissionButton, &QPushButton::clicked, this, &Permissions::deletePermission);
     connect(ui->editPermissionButton, &QPushButton::clicked, this, &Permissions::editPermission);
+    // 菜单界面按钮
+    connect(ui->addMenuButton, &QPushButton::clicked, this, &Permissions::addMenu);
+    connect(ui->addMenuPermissionButton, &QPushButton::clicked, this, &Permissions::addMenuPermission);
+    connect(ui->deleteMenuButton, &QPushButton::clicked, this, &Permissions::deleteMenu);
+    connect(ui->deleteMenuPermissionButton, &QPushButton::clicked, this, &Permissions::deleteMenuPermission);
+    connect(ui->editMenuButton, &QPushButton::clicked, this, &Permissions::editMenu);
+    connect(ui->editMenuPermissionButton, &QPushButton::clicked, this, &Permissions::editMenuPermission);
+    connect(ui->searchMenuPermissionButton, &QPushButton::clicked, this, &Permissions::searchMenuPermission);
     // 操作日志
     connect(ui->ViewLogsButton, &QPushButton::clicked, this, &Permissions::ViewLogs);
     // 显示当前用户
@@ -253,23 +280,16 @@ void Permissions::Menu()
     ui->deletePermissionButton->setVisible(functions.contains("删除权限"));
     ui->editPermissionButton->setVisible(functions.contains("修改权限"));
 
+    if(functions.contains("菜单管理")) loadMenuPlugin();
+    ui->addMenuButton->setVisible(functions.contains("添加菜单"));
+    ui->addMenuPermissionButton->setVisible(functions.contains("添加菜单权限"));
+    ui->deleteMenuButton->setVisible(functions.contains("删除菜单"));
+    ui->deleteMenuPermissionButton->setVisible(functions.contains("删除菜单权限"));
+    ui->editMenuButton->setVisible(functions.contains("修改菜单"));
+    ui->editMenuPermissionButton->setVisible(functions.contains("修改菜单权限"));
+    ui->searchMenuPermissionButton->setVisible(functions.contains("查找菜单权限"));
+
     ui->ViewLogsButton->setVisible(functions.contains("查看操作日志"));
-
-    // ui->addUserButton->setVisible(false);
-    // ui->addUserButton->setEnabled(false);
-    // ui->deleteUserButton->setVisible(false);
-    // ui->editUserButton->setVisible(false);
-
-
-    // ui->userButton->setVisible(false);
-    // ui->roleButton->setVisible(false);
-    // ui->groupButton->setVisible(false);
-    // ui->functionButton->setVisible(false);
-
-    // ui->userButton->setEnabled(false);
-    // ui->roleButton->setEnabled(false);
-    // ui->groupButton->setEnabled(false);
-    // ui->functionButton->setEnabled(false);
 }
 // 界面切换
 void Permissions::switchToUserPage()
@@ -279,18 +299,23 @@ void Permissions::switchToUserPage()
 }
 void Permissions::switchToRolePage()
 {
-    ui->stackedWidget->setCurrentWidget(ui->rolePage); // 切换到角色页面
+    ui->stackedWidget->setCurrentWidget(ui->rolePage);
     showRolePage();
 }
 void Permissions::switchToGroupPage()
 {
-    ui->stackedWidget->setCurrentWidget(ui->groupPage); // 切换到组页面
+    ui->stackedWidget->setCurrentWidget(ui->groupPage);
     showGroupPage();
 }
 void Permissions::switchToFunctionPage()
 {
-    ui->stackedWidget->setCurrentWidget(ui->functionPage); // 切换到组页面
+    ui->stackedWidget->setCurrentWidget(ui->functionPage);
     showFunctionPage();
+}
+void Permissions::switchToMenuPage()
+{
+    ui->stackedWidget->setCurrentWidget(ui->menuPage);
+    showMenuPage();
 }
 // 数据内容显示
 void Permissions::showUserPage()
@@ -323,6 +348,14 @@ void Permissions::showFunctionPage()
         functionPlugin->showPage(ui->functionTableView);
     } else {
         QMessageBox::critical(this, "Plugin Error", "FunctionPlugin not loaded.");
+    }
+}
+void Permissions::showMenuPage()
+{
+    if (menuPlugin) {
+        menuPlugin->showPage(ui->menuTableView);
+    } else {
+        QMessageBox::critical(this, "Plugin Error", "MenuPlugin not loaded.");
     }
 }
 // 添加用户
@@ -611,6 +644,74 @@ void Permissions::editPermission()
                                   , Q_ARG(int, userid), Q_ARG(QString, name));
     } else {
         QMessageBox::warning(this, tr("Error"), tr("function plugin is not loaded."));
+    }
+}
+//菜单模块
+
+// 添加菜单
+void Permissions::addMenu()
+{
+    if (menuPlugin) {
+        QTableView *view = ui->menuTableView;
+        menuPlugin->addEntity(view, userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
+    }
+}
+//添加菜单权限
+void Permissions::addMenuPermission()
+{
+    if (menuPlugin) {
+        menuPlugin->addEntityPermission(userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
+    }
+}
+// 删除功能
+void Permissions::deleteMenu()
+{
+    if (menuPlugin) {
+        QTableView *view = ui->menuTableView;
+        menuPlugin->deleteEntity(view, userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
+    }
+}
+// 删除功能权限
+void Permissions::deleteMenuPermission()
+{
+    if (menuPlugin) {
+        menuPlugin->deleteEntityPermission(userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
+    }
+}
+// 修改功能
+void Permissions::editMenu()
+{
+    if (menuPlugin) {
+        QTableView *view = ui->menuTableView;
+        menuPlugin->editEntity(view, userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
+    }
+}
+// 修改功能权限
+void Permissions::editMenuPermission()
+{
+    if (menuPlugin) {
+        menuPlugin->editEntityPermission(userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
+    }
+}
+// 查找权限功能
+void Permissions::searchMenuPermission()
+{
+    if (menuPlugin) {
+        menuPlugin->searchEntityPermission(userid, name);
+    } else {
+        QMessageBox::warning(this, tr("Error"), tr("menu plugin is not loaded."));
     }
 }
 // 日志模块

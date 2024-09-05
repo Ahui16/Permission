@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
 
     // LoginDialog loginDialog;
     // loginDialog.show();
-    Permissions *permissions = new Permissions(1, "1");
+    Permissions *permissions = new Permissions(4, "4");
     // 设置大小最大可为全屏, 最小为设计ui界面时候的大小
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
