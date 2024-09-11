@@ -39,7 +39,7 @@ public:
     void loadGroupPlugin();  // 加载组插件
     void loadRolePlugin();  // 加载角色插件
     void loadFunctionPlugin();  // 加载功能插件
-    void loadMenuPlugin();  //加载菜单插件
+    void loadPermissionPlugin();  //加载菜单插件
 
 private slots:
     // 界面切换
@@ -48,7 +48,7 @@ private slots:
     void switchToRolePage();
     void switchToGroupPage();
     void switchToFunctionPage();
-    void switchToMenuPage();
+    void switchToPermissionPage();
     // 用户界面槽函数
     void addUser();
     void addUserPermission();
@@ -75,24 +75,19 @@ private slots:
     void searchGroupPermission();
     // 功能槽函数
     void addFunction();
-    void addFunctionPermission();
     void deleteFunction();
-    void deleteFunctionPermission();
     void editFunction();
     void editFunctionPermission();
     void searchFunctionPermission();
-    // 界面槽函数
-    void addMenu();
-    void addMenuPermission();
-    void deleteMenu();
-    void deleteMenuPermission();
-    void editMenu();
-    void editMenuPermission();
-    void searchMenuPermission();
     // 权限槽函数
     void addPermission();
+    void addPermissionPermission();
     void deletePermission();
+    void deletePermissionPermission();
     void editPermission();
+    void editPermissionPermission();
+    void searchPermissionPermission();
+
     //操作日志
     void ViewLogs();
 private:
@@ -101,7 +96,7 @@ private:
     IEntityPlugin *groupPlugin;
     IEntityPlugin *rolePlugin;
     IEntityPlugin *functionPlugin;
-    IEntityPlugin *menuPlugin;
+    IEntityPlugin *permissionPlugin;
     QSqlDatabase db;
 
     // 用户信息
@@ -114,7 +109,7 @@ private:
     void showRolePage();
     void showGroupPage();
     void showFunctionPage();
-    void showMenuPage();
+    void showPermissionPage();
     void writeLog(const int &id, const QString &username, const QString &functionName,
                   const QString &result, const QString &actions, const QString &description = "");
     void Menu();

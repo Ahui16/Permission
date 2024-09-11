@@ -16,6 +16,14 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSqlQuery>
+#include <QHeaderView>
+#include <QComboBox>
+#include <QCompleter>
+#include <Qlabel>
+#include <QCheckBox>
+#include <QScrollArea>
+#include <QStyledItemDelegate>
+#include <QApplication>
 
 class IEntityPlugin : public QObject
 {
@@ -25,20 +33,20 @@ public:
     virtual ~IEntityPlugin() {}
 
     // 增加、删除、修改实体
-    virtual void addEntity(QTableView *view, int id, const QString &Users) = 0;
-    virtual void deleteEntity(QTableView *view, int id, const QString &Users) = 0;
-    virtual void editEntity(QTableView *view, int id, const QString &Users) = 0;
+    virtual void addEntity() = 0;
+    virtual void deleteEntity() = 0;
+    virtual void editEntity() = 0;
     // 增加、删除、修改、查找权限
-    virtual void addEntityPermission(int id, const QString &Users) = 0;
-    virtual void deleteEntityPermission(int id, const QString &Users) = 0;
-    virtual void editEntityPermission(int id, const QString &Users) = 0;
-    virtual void searchEntityPermission(int id, const QString &Users) = 0;
-
+    virtual void addEntityPermission() = 0;
+    virtual void deleteEntityPermission() = 0;
+    virtual void editEntityPermission() = 0;
+    virtual void searchEntityPermission() = 0;
     // 显示数据
-    virtual void showPage(QTableView *view) = 0;
-    virtual void showData(QTableView *view) = 0;
+    virtual void showPage() = 0;
+    virtual void showData() = 0;
     // 设置数据库
     virtual void setDatabase(const QSqlDatabase &db) = 0;
+    virtual void setData(QTableView *View, int ID, const QString &username) = 0;
     virtual void writeLog(const int &id, const QString &username, const QString &functionName,
                           const QString &result, const QString &actions, const QString &description = "")
     {
