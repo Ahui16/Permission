@@ -167,25 +167,19 @@ void Permissions::setupConnections()
     connect(ui->permissionButton, &QPushButton::clicked, this, &Permissions::handleButtonClick);
     // 用户界面按钮
     connect(ui->addUserButton, &QPushButton::clicked, this, &Permissions::addUser);
-    connect(ui->addUserPermissionButton, &QPushButton::clicked, this, &Permissions::addUserPermission);
     connect(ui->deleteUserButton, &QPushButton::clicked, this, &Permissions::deleteUser);
-    connect(ui->deleteUserPermissionButton, &QPushButton::clicked, this, &Permissions::deleteUserPermission);
     connect(ui->editUserButton, &QPushButton::clicked, this, &Permissions::editUser);
     connect(ui->editUserPermissionButton, &QPushButton::clicked, this, &Permissions::editUserPermission);
     connect(ui->searchUserPermissionButton, &QPushButton::clicked, this, &Permissions::searchUserPermission);
     // 组界面按钮
     connect(ui->addGroupButton, &QPushButton::clicked, this, &Permissions::addGroup);
-    connect(ui->addGroupPermissionButton, &QPushButton::clicked, this, &Permissions::addGroupPermission);
     connect(ui->deleteGroupButton, &QPushButton::clicked, this, &Permissions::deleteGroup);
-    connect(ui->deleteGroupPermissionButton, &QPushButton::clicked, this, &Permissions::deleteGroupPermission);
     connect(ui->editGroupButton, &QPushButton::clicked, this, &Permissions::editGroup);
     connect(ui->editGroupPermissionButton, &QPushButton::clicked, this, &Permissions::editGroupPermission);
     connect(ui->searchGroupPermissionButton, &QPushButton::clicked, this, &Permissions::searchGroupPermission);
     // 角色界面按钮
     connect(ui->addRoleButton, &QPushButton::clicked, this, &Permissions::addRole);
-    connect(ui->addRolePermissionButton, &QPushButton::clicked, this, &Permissions::addRolePermission);
     connect(ui->deleteRoleButton, &QPushButton::clicked, this, &Permissions::deleteRole);
-    connect(ui->deleteRolePermissionButton, &QPushButton::clicked, this, &Permissions::deleteRolePermission);
     connect(ui->editRoleButton, &QPushButton::clicked, this, &Permissions::editRole);
     connect(ui->editRolePermissionButton, &QPushButton::clicked, this, &Permissions::editRolePermission);
     connect(ui->searchRolePermissionButton, &QPushButton::clicked, this, &Permissions::searchRolePermission);
@@ -197,9 +191,7 @@ void Permissions::setupConnections()
     connect(ui->searchFunctionPermissionButton, &QPushButton::clicked, this, &Permissions::searchFunctionPermission);
     // 权限界面按钮
     connect(ui->addPermissionButton, &QPushButton::clicked, this, &Permissions::addPermission);
-    connect(ui->addPermissionPermissionButton, &QPushButton::clicked, this, &Permissions::addPermissionPermission);
     connect(ui->deletePermissionButton, &QPushButton::clicked, this, &Permissions::deletePermission);
-    connect(ui->deletePermissionPermissionButton, &QPushButton::clicked, this, &Permissions::deletePermissionPermission);
     connect(ui->editPermissionButton, &QPushButton::clicked, this, &Permissions::editPermission);
     connect(ui->editPermissionPermissionButton, &QPushButton::clicked, this, &Permissions::editPermissionPermission);
     connect(ui->searchPermissionPermissionButton, &QPushButton::clicked, this, &Permissions::searchPermissionPermission);
@@ -213,75 +205,48 @@ void Permissions::setupConnections()
 // 界面配置
 void Permissions::Menu()
 {
-    QList<QString> functions;
-    QSqlQuery query;
-    query.prepare(R"(
-        SELECT DISTINCT f.FunctionName
-        FROM Functions f
-        JOIN Permission_Function pf ON f.FunctionID = pf.FunctionID
-        JOIN Permissions p ON p.PermissionID = pf.PermissionID
-        JOIN User_Permissions up ON up.PermissionID = p.PermissionID
-        JOIN Users u ON u.UserID = up.UserID
-        WHERE u.username = :username
-    )");
-    query.bindValue(":username", name);
+    QList<QString> functions = getUserFunctions(name);
 
-    if (!query.exec()) {
-        QMessageBox::critical(this, "错误", query.lastError().text());
-        qDebug() << "操作错误";
-        return;
-    }
-
-    while (query.next()) {
-        functions.append(query.value(0).toString());
-    }
     ui->userButton->setEnabled(functions.contains("用户管理"));
     ui->roleButton->setEnabled(functions.contains("角色管理"));
     ui->groupButton->setEnabled(functions.contains("组别管理"));
     ui->functionButton->setEnabled(functions.contains("功能管理"));
+    ui->permissionButton->setEnabled(functions.contains("权限管理"));
 
     if(functions.contains("用户管理")) loadUserPlugin();
     ui->addUserButton->setVisible(functions.contains("添加用户"));
-    ui->addUserPermissionButton->setVisible(functions.contains("添加用户权限"));
     ui->deleteUserButton->setVisible(functions.contains("删除用户"));
-    ui->deleteUserPermissionButton->setVisible(functions.contains("删除用户权限"));
     ui->editUserButton->setVisible(functions.contains("修改用户"));
-    ui->editUserPermissionButton->setVisible(functions.contains("修改用户权限"));
+    ui->editUserPermissionButton->setVisible(functions.contains("设置用户权限"));
     ui->searchUserPermissionButton->setVisible(functions.contains("查找用户权限"));
 
     if(functions.contains("角色管理")) loadRolePlugin();
     ui->addRoleButton->setVisible(functions.contains("添加角色"));
-    ui->addRolePermissionButton->setVisible(functions.contains("添加角色权限"));
     ui->deleteRoleButton->setVisible(functions.contains("删除角色"));
-    ui->deleteRolePermissionButton->setVisible(functions.contains("删除角色权限"));
     ui->editRoleButton->setVisible(functions.contains("修改角色"));
-    ui->editRolePermissionButton->setVisible(functions.contains("修改角色权限"));
+    ui->editRolePermissionButton->setVisible(functions.contains("设置角色权限"));
     ui->searchRolePermissionButton->setVisible(functions.contains("查找角色权限"));
 
     if(functions.contains("组别管理")) loadGroupPlugin();
     ui->addGroupButton->setVisible(functions.contains("添加组别"));
-    ui->addGroupPermissionButton->setVisible(functions.contains("添加组别权限"));
     ui->deleteGroupButton->setVisible(functions.contains("删除组别"));
-    ui->deleteGroupPermissionButton->setVisible(functions.contains("删除组别权限"));
     ui->editGroupButton->setVisible(functions.contains("修改组别"));
-    ui->editGroupPermissionButton->setVisible(functions.contains("修改组别权限"));
+    ui->editGroupPermissionButton->setVisible(functions.contains("设置组别权限"));
     ui->searchGroupPermissionButton->setVisible(functions.contains("查找组别权限"));
 
     if(functions.contains("功能管理")) loadFunctionPlugin();
     ui->addFunctionButton->setVisible(functions.contains("添加功能"));
     ui->deleteFunctionButton->setVisible(functions.contains("删除功能"));
     ui->editFunctionButton->setVisible(functions.contains("修改功能"));
-    ui->editFunctionPermissionButton->setVisible(functions.contains("修改功能权限"));
+    ui->editFunctionPermissionButton->setVisible(functions.contains("设置功能权限"));
     ui->searchFunctionPermissionButton->setVisible(functions.contains("查找功能权限"));
 
     if(functions.contains("权限管理")) loadPermissionPlugin();
     ui->addPermissionButton->setVisible(functions.contains("添加权限"));
-    ui->addPermissionPermissionButton->setVisible(functions.contains("添加权限权限"));
     ui->deletePermissionButton->setVisible(functions.contains("删除权限"));
-    ui->deletePermissionPermissionButton->setVisible(functions.contains("删除权限权限"));
     ui->editPermissionButton->setVisible(functions.contains("修改权限"));
-    ui->editPermissionPermissionButton->setVisible(functions.contains("修改权限权限"));
-    ui->searchPermissionPermissionButton->setVisible(functions.contains("查找权限权限"));
+    ui->editPermissionPermissionButton->setVisible(functions.contains("设置权限功能"));
+    ui->searchPermissionPermissionButton->setVisible(functions.contains("查找权限功能"));
 
     ui->ViewLogsButton->setVisible(functions.contains("查看操作日志"));
 }
@@ -315,7 +280,7 @@ void Permissions::switchToPermissionPage()
 void Permissions::showUserPage()
 {
     if (userPlugin) {
-        userPlugin->showPage();
+        userPlugin->showData();
     } else {
         QMessageBox::critical(this, "Plugin Error", "UserPlugin not loaded.");
     }
@@ -323,7 +288,7 @@ void Permissions::showUserPage()
 void Permissions::showRolePage()
 {
     if (rolePlugin) {
-        rolePlugin->showPage();
+        rolePlugin->showData();
     } else {
         QMessageBox::critical(this, "Plugin Error", "RolePlugin not loaded.");
     }
@@ -331,7 +296,7 @@ void Permissions::showRolePage()
 void Permissions::showGroupPage()
 {
     if (groupPlugin) {
-        groupPlugin->showPage();
+        groupPlugin->showData();
     } else {
         QMessageBox::critical(this, "Plugin Error", "GroupPlugin not loaded.");
     }
@@ -339,7 +304,7 @@ void Permissions::showGroupPage()
 void Permissions::showFunctionPage()
 {
     if (functionPlugin) {
-        functionPlugin->showPage();
+        functionPlugin->showData();
     } else {
         QMessageBox::critical(this, "Plugin Error", "FunctionPlugin not loaded.");
     }
@@ -347,7 +312,7 @@ void Permissions::showFunctionPage()
 void Permissions::showPermissionPage()
 {
     if (permissionPlugin) {
-        permissionPlugin->showPage();
+        permissionPlugin->showData();
     } else {
         QMessageBox::critical(this, "Plugin Error", "PermissionPlugin not loaded.");
     }
@@ -360,26 +325,10 @@ void Permissions::addUser() {
         QMessageBox::warning(this, tr("Error"), tr("User plugin is not loaded."));
     }
 }
-// 添加用户权限
-void Permissions::addUserPermission() {
-    if (userPlugin) {
-        userPlugin->addEntityPermission();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("User plugin is not loaded."));
-    }
-}
 // 删除用户
 void Permissions::deleteUser() {
     if (userPlugin) {
         userPlugin->deleteEntity();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("User plugin is not loaded."));
-    }
-}
-// 删除用户权限
-void Permissions::deleteUserPermission() {
-    if (userPlugin) {
-        userPlugin->deleteEntityPermission();
     } else {
         QMessageBox::warning(this, tr("Error"), tr("User plugin is not loaded."));
     }
@@ -407,6 +356,7 @@ void Permissions::editUser() {
 void Permissions::editUserPermission() {
     if (userPlugin) {
         userPlugin->editEntityPermission();
+        Menu();
     } else {
         QMessageBox::warning(this, tr("Error"), tr("User plugin is not loaded."));
     }
@@ -428,26 +378,10 @@ void Permissions::addGroup() {
         QMessageBox::warning(this, tr("Error"), tr("group plugin is not loaded."));
     }
 }
-// 添加组权限
-void Permissions::addGroupPermission() {
-    if (groupPlugin) {
-        groupPlugin->addEntityPermission();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("group plugin is not loaded."));
-    }
-}
 // 删除组
 void Permissions::deleteGroup() {
     if (groupPlugin) {
         groupPlugin->deleteEntity();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("group plugin is not loaded."));
-    }
-}
-// 删除组权限
-void Permissions::deleteGroupPermission() {
-    if (groupPlugin) {
-        groupPlugin->deleteEntityPermission();
     } else {
         QMessageBox::warning(this, tr("Error"), tr("group plugin is not loaded."));
     }
@@ -485,26 +419,10 @@ void Permissions::addRole() {
         QMessageBox::warning(this, tr("Error"), tr("role plugin is not loaded."));
     }
 }
-// 添加角色权限
-void Permissions::addRolePermission() {
-    if (rolePlugin) {
-        rolePlugin->addEntityPermission();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("role plugin is not loaded."));
-    }
-}
 // 删除角色
 void Permissions::deleteRole() {
     if (rolePlugin) {
         rolePlugin->deleteEntity();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("role plugin is not loaded."));
-    }
-}
-// 删除角色权限
-void Permissions::deleteRolePermission() {
-    if (rolePlugin) {
-        rolePlugin->deleteEntityPermission();
     } else {
         QMessageBox::warning(this, tr("Error"), tr("role plugin is not loaded."));
     }
@@ -589,29 +507,11 @@ void Permissions::addPermission()
         QMessageBox::warning(this, tr("Error"), tr("permission plugin is not loaded."));
     }
 }
-//添加权限权限
-void Permissions::addPermissionPermission()
-{
-    if (permissionPlugin) {
-        permissionPlugin->addEntityPermission();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("permission plugin is not loaded."));
-    }
-}
 // 删除功能
 void Permissions::deletePermission()
 {
     if (permissionPlugin) {
         permissionPlugin->deleteEntity();
-    } else {
-        QMessageBox::warning(this, tr("Error"), tr("permission plugin is not loaded."));
-    }
-}
-// 删除功能权限
-void Permissions::deletePermissionPermission()
-{
-    if (permissionPlugin) {
-        permissionPlugin->deleteEntityPermission();
     } else {
         QMessageBox::warning(this, tr("Error"), tr("permission plugin is not loaded."));
     }
@@ -765,87 +665,69 @@ void Permissions::ViewLogs()
     dialog->exec();
     delete dialog;
 }
+QList<QString> Permissions::getUserFunctions(const QString& username) {
+    QList<QString> functions;
+    QSqlQuery query;
 
-// // 查看日志
-// void Permissions::ViewLogs()
-// {
-//     QDialog *dialog = new QDialog();
-//     dialog->setWindowTitle("查看日志");
-//     dialog->resize(800, 600);
-//     QFormLayout *formLayout = new QFormLayout(dialog);
+    query.prepare(R"(
+        -- 用户直接关联的权限
+        SELECT DISTINCT f.FunctionName
+        FROM Functions f
+        JOIN Permission_Function pf ON f.FunctionID = pf.FunctionID
+        JOIN Permissions p ON p.PermissionID = pf.PermissionID
+        JOIN User_Permissions up ON up.PermissionID = p.PermissionID
+        JOIN Users u ON u.UserID = up.UserID
+        WHERE u.Username = :username
 
-//     QTableView *tableView = new QTableView();
-//     QSqlQueryModel *model = new QSqlQueryModel();
-//     tableView->setModel(model);
-//     tableView->resizeColumnsToContents(); // 调整列宽以适应内容
-//     tableView->resizeRowsToContents();    // 调整行高以适应内容
-//     tableView->horizontalHeader()->setStretchLastSection(true); // 使最后一列扩展以填充表格
+        UNION
 
-//     QLineEdit *usernameEdit = new QLineEdit();
-//     QLineEdit *functionNameEdit = new QLineEdit();
-//     QComboBox *resultComboBox = new QComboBox();
-//     resultComboBox->addItems({"所有", "成功", "失败"});
-//     QComboBox *actionComboBox = new QComboBox();
-//     actionComboBox->addItems({"所有", "添加", "修改", "删除", "查找", "注册", "登录"});
-//     QDateEdit *startDateEdit = new QDateEdit();
-//     QDateEdit *endDateEdit = new QDateEdit();
-//     QDate today = QDate::currentDate();
-//     QDate tomorrow = today.addDays(1);
-//     startDateEdit->setDate(today);
-//     endDateEdit->setDate(tomorrow);
-//     startDateEdit->setCalendarPopup(true);
-//     endDateEdit->setCalendarPopup(true);
+        -- 用户通过角色获得的权限
+        SELECT DISTINCT f.FunctionName
+        FROM Functions f
+        JOIN Permission_Function pf ON f.FunctionID = pf.FunctionID
+        JOIN Permissions p ON p.PermissionID = pf.PermissionID
+        JOIN Role_Permissions rp ON rp.PermissionID = p.PermissionID
+        JOIN User_Roles ur ON ur.RoleID = rp.RoleID
+        JOIN Users u ON u.UserID = ur.UserID
+        WHERE u.Username = :username
 
-//     QPushButton *filterButton = new QPushButton("筛选");
+        UNION
 
-//     formLayout->addRow("用户名:", usernameEdit);
-//     formLayout->addRow("功能名称:", functionNameEdit);
-//     formLayout->addRow("操作状态:", resultComboBox);
-//     formLayout->addRow("操作名称:", actionComboBox);
-//     formLayout->addRow("开始时间:", startDateEdit);
-//     formLayout->addRow("结束时间:", endDateEdit);
-//     formLayout->addWidget(filterButton);
-//     formLayout->addRow(tableView);
+        -- 用户通过组获得的权限
+        SELECT DISTINCT f.FunctionName
+        FROM Functions f
+        JOIN Permission_Function pf ON f.FunctionID = pf.FunctionID
+        JOIN Permissions p ON p.PermissionID = pf.PermissionID
+        JOIN Group_Permissions gp ON gp.PermissionID = p.PermissionID
+        JOIN User_Groups ug ON ug.GroupID = gp.GroupID
+        JOIN Users u ON u.UserID = ug.UserID
+        WHERE u.Username = :username
 
-//     connect(filterButton, &QPushButton::clicked, this, [=]() {
-//         QString username = usernameEdit->text().trimmed();
-//         QString functionName = functionNameEdit->text().trimmed();
-//         QString result = resultComboBox->currentText();
-//         QString action = actionComboBox->currentText();
-//         QDate startDate = startDateEdit->date();
-//         QDate endDate = endDateEdit->date();
-//         QString queryStr = "SELECT FunctionName, Username, Result, Actions, Timestamp, Description FROM UserLogs WHERE 1=1";
+        UNION
 
-//         if (!functionName.isEmpty()) queryStr += " AND FunctionName = :functionName";
-//         if (!username.isEmpty()) queryStr += " AND Username = :username";
-//         if (result != "所有") queryStr += " AND Result = :result";
-//         if (action != "所有") queryStr += " AND Actions = :action";
-//         if (startDate.isValid()) queryStr += " AND Timestamp >= :startDate";
-//         if (endDate.isValid()) queryStr += " AND Timestamp <= :endDate";
+        -- 用户通过组中的角色获得的权限
+        SELECT DISTINCT f.FunctionName
+        FROM Functions f
+        JOIN Permission_Function pf ON f.FunctionID = pf.FunctionID
+        JOIN Permissions p ON p.PermissionID = pf.PermissionID
+        JOIN Role_Permissions rp ON rp.PermissionID = p.PermissionID
+        JOIN Group_Roles gr ON gr.RoleID = rp.RoleID
+        JOIN User_Groups ug ON ug.GroupID = gr.GroupID
+        JOIN Users u ON u.UserID = ug.UserID
+        WHERE u.Username = :username
+    )");
 
-//         QSqlQuery query;
-//         query.prepare(queryStr);
-//         if (!functionName.isEmpty()) query.bindValue(":functionName", functionName);
-//         if (!username.isEmpty()) query.bindValue(":username", username);
-//         if (result != "所有") query.bindValue(":result", result);
-//         if (action != "所有") query.bindValue(":action", action);
-//         if (startDate.isValid()) query.bindValue(":startDate", startDate.toString("yyyy-MM-dd"));
-//         if (endDate.isValid()) query.bindValue(":endDate", endDate.toString("yyyy-MM-dd"));
+    query.bindValue(":username", username);
 
-//         if (!query.exec()) {
-//             QMessageBox::critical(dialog, "查询错误", "数据库查询失败: " + query.lastError().text());
-//             writeLog(, "查看操作日志", "失败", "查找", "数据库查询失败");
-//             return;
-//         }
-//         model->setQuery(query);
-//         if (model->lastError().isValid()) {
-//             QMessageBox::critical(dialog, "数据错误", "数据模型设置失败: " + model->lastError().text());
-//             writeLog(, "查看操作日志", "失败", "查找", "数据模型设置失败");
-//             return;
-//         }
-//         writeLog(, "查看操作日志", "成功", "查找", "查看操作日志");
-//     });
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "错误", query.lastError().text());
+        qDebug() << "查询执行失败: " << query.lastError().text();
+        return functions;
+    }
 
-//     dialog->exec();
-//     delete dialog;
-// }
+    while (query.next()) {
+        functions.append(query.value(0).toString());
+    }
+
+    return functions;
+}

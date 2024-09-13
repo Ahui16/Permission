@@ -51,25 +51,19 @@ private slots:
     void switchToPermissionPage();
     // 用户界面槽函数
     void addUser();
-    void addUserPermission();
     void deleteUser();
-    void deleteUserPermission();
     void editUser();
     void editUserPermission();
     void searchUserPermission();
     // 角色界面槽函数
     void addRole();
-    void addRolePermission();
     void deleteRole();
-    void deleteRolePermission();
     void editRole();
     void editRolePermission();
     void searchRolePermission();
     // 组界面槽函数
     void addGroup();
-    void addGroupPermission();
     void deleteGroup();
-    void deleteGroupPermission();
     void editGroup();
     void editGroupPermission();
     void searchGroupPermission();
@@ -81,13 +75,12 @@ private slots:
     void searchFunctionPermission();
     // 权限槽函数
     void addPermission();
-    void addPermissionPermission();
     void deletePermission();
-    void deletePermissionPermission();
     void editPermission();
     void editPermissionPermission();
     void searchPermissionPermission();
-
+    // 获取登录用户所有功能权限
+    QList<QString> getUserFunctions(const QString& username);
     //操作日志
     void ViewLogs();
 private:

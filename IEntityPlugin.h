@@ -36,15 +36,14 @@ public:
     virtual void addEntity() = 0;
     virtual void deleteEntity() = 0;
     virtual void editEntity() = 0;
-    // 增加、删除、修改、查找权限
-    virtual void addEntityPermission() = 0;
-    virtual void deleteEntityPermission() = 0;
+    // 编辑实体权限
     virtual void editEntityPermission() = 0;
+    virtual void addEntityPermission(const int permissionID, const int ID, const QString &Name) = 0;
+    virtual void deleteEntityPermission(const int permissionID, const int ID, const QString &Name) = 0;
     virtual void searchEntityPermission() = 0;
     // 显示数据
-    virtual void showPage() = 0;
     virtual void showData() = 0;
-    // 设置数据库
+    // 设置数据库及数据
     virtual void setDatabase(const QSqlDatabase &db) = 0;
     virtual void setData(QTableView *View, int ID, const QString &username) = 0;
     virtual void writeLog(const int &id, const QString &username, const QString &functionName,

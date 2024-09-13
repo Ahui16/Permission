@@ -52,16 +52,14 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *groupPage;
     QGridLayout *gridLayout_4;
-    QSpacerItem *horizontalSpacer_7;
+    QPushButton *editGroupButton;
     QPushButton *searchGroupPermissionButton;
     QPushButton *editGroupPermissionButton;
-    QPushButton *deleteGroupButton;
-    QPushButton *editGroupButton;
-    QPushButton *addGroupPermissionButton;
-    QPushButton *deleteGroupPermissionButton;
+    QSpacerItem *horizontalSpacer_7;
     QPushButton *addGroupButton;
-    QSpacerItem *horizontalSpacer_8;
     QTableView *groupTableView;
+    QPushButton *deleteGroupButton;
+    QSpacerItem *horizontalSpacer_8;
     QWidget *functionPage;
     QGridLayout *gridLayout_5;
     QPushButton *editFunctionPermissionButton;
@@ -74,39 +72,33 @@ public:
     QPushButton *searchFunctionPermissionButton;
     QWidget *permissionPage;
     QGridLayout *gridLayout_6;
-    QPushButton *addPermissionPermissionButton;
     QPushButton *addPermissionButton;
     QPushButton *editPermissionButton;
+    QSpacerItem *horizontalSpacer_12;
     QPushButton *deletePermissionButton;
-    QPushButton *deletePermissionPermissionButton;
     QPushButton *editPermissionPermissionButton;
     QSpacerItem *horizontalSpacer_11;
-    QPushButton *searchPermissionPermissionButton;
-    QSpacerItem *horizontalSpacer_12;
     QTableView *permissionTableView;
+    QPushButton *searchPermissionPermissionButton;
     QWidget *userPage;
     QGridLayout *gridLayout;
     QPushButton *editUserButton;
     QPushButton *editUserPermissionButton;
-    QPushButton *deleteUserPermissionButton;
-    QPushButton *addUserButton;
-    QPushButton *ViewLogsButton;
     QPushButton *deleteUserButton;
-    QPushButton *addUserPermissionButton;
-    QTableView *userTableView;
-    QPushButton *searchUserPermissionButton;
-    QSpacerItem *horizontalSpacer;
     QSpacerItem *horizontalSpacer_4;
+    QPushButton *ViewLogsButton;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *addUserButton;
+    QPushButton *searchUserPermissionButton;
+    QTableView *userTableView;
     QWidget *rolePage;
     QGridLayout *gridLayout_2;
+    QSpacerItem *horizontalSpacer_5;
     QPushButton *searchRolePermissionButton;
-    QPushButton *deleteRolePermissionButton;
-    QPushButton *editRoleButton;
-    QPushButton *addRolePermissionButton;
     QPushButton *editRolePermissionButton;
     QPushButton *deleteRoleButton;
-    QSpacerItem *horizontalSpacer_5;
     QPushButton *addRoleButton;
+    QPushButton *editRoleButton;
     QSpacerItem *horizontalSpacer_6;
     QTableView *roleTableView;
     QMenuBar *menubar;
@@ -379,59 +371,11 @@ public:
         groupPage->setObjectName("groupPage");
         gridLayout_4 = new QGridLayout(groupPage);
         gridLayout_4->setObjectName("gridLayout_4");
-        horizontalSpacer_7 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_7, 0, 0, 1, 1);
-
-        searchGroupPermissionButton = new QPushButton(groupPage);
-        searchGroupPermissionButton->setObjectName("searchGroupPermissionButton");
+        editGroupButton = new QPushButton(groupPage);
+        editGroupButton->setObjectName("editGroupButton");
         QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(searchGroupPermissionButton->sizePolicy().hasHeightForWidth());
-        searchGroupPermissionButton->setSizePolicy(sizePolicy4);
-        searchGroupPermissionButton->setMinimumSize(QSize(161, 51));
-        searchGroupPermissionButton->setMaximumSize(QSize(161, 51));
-        searchGroupPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}"));
-
-        gridLayout_4->addWidget(searchGroupPermissionButton, 0, 7, 1, 1);
-
-        editGroupPermissionButton = new QPushButton(groupPage);
-        editGroupPermissionButton->setObjectName("editGroupPermissionButton");
-        sizePolicy4.setHeightForWidth(editGroupPermissionButton->sizePolicy().hasHeightForWidth());
-        editGroupPermissionButton->setSizePolicy(sizePolicy4);
-        editGroupPermissionButton->setMinimumSize(QSize(75, 51));
-        editGroupPermissionButton->setMaximumSize(QSize(75, 51));
-        editGroupPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}"));
-
-        gridLayout_4->addWidget(editGroupPermissionButton, 0, 6, 1, 1);
-
-        deleteGroupButton = new QPushButton(groupPage);
-        deleteGroupButton->setObjectName("deleteGroupButton");
-        sizePolicy4.setHeightForWidth(deleteGroupButton->sizePolicy().hasHeightForWidth());
-        deleteGroupButton->setSizePolicy(sizePolicy4);
-        deleteGroupButton->setMinimumSize(QSize(75, 51));
-        deleteGroupButton->setMaximumSize(QSize(75, 51));
-        deleteGroupButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
-"	color: white;\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
-"}"));
-
-        gridLayout_4->addWidget(deleteGroupButton, 0, 2, 1, 1);
-
-        editGroupButton = new QPushButton(groupPage);
-        editGroupButton->setObjectName("editGroupButton");
         sizePolicy4.setHeightForWidth(editGroupButton->sizePolicy().hasHeightForWidth());
         editGroupButton->setSizePolicy(sizePolicy4);
         editGroupButton->setMinimumSize(QSize(75, 51));
@@ -441,38 +385,55 @@ public:
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_4->addWidget(editGroupButton, 0, 3, 1, 1);
 
-        addGroupPermissionButton = new QPushButton(groupPage);
-        addGroupPermissionButton->setObjectName("addGroupPermissionButton");
-        sizePolicy4.setHeightForWidth(addGroupPermissionButton->sizePolicy().hasHeightForWidth());
-        addGroupPermissionButton->setSizePolicy(sizePolicy4);
-        addGroupPermissionButton->setMinimumSize(QSize(75, 51));
-        addGroupPermissionButton->setMaximumSize(QSize(75, 51));
-        addGroupPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#3284e8; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+        searchGroupPermissionButton = new QPushButton(groupPage);
+        searchGroupPermissionButton->setObjectName("searchGroupPermissionButton");
+        sizePolicy4.setHeightForWidth(searchGroupPermissionButton->sizePolicy().hasHeightForWidth());
+        searchGroupPermissionButton->setSizePolicy(sizePolicy4);
+        searchGroupPermissionButton->setMinimumSize(QSize(85, 51));
+        searchGroupPermissionButton->setMaximumSize(QSize(85, 51));
+        searchGroupPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #71ad6b; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\273\277\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout_4->addWidget(addGroupPermissionButton, 0, 4, 1, 1);
+        gridLayout_4->addWidget(searchGroupPermissionButton, 0, 5, 1, 1);
 
-        deleteGroupPermissionButton = new QPushButton(groupPage);
-        deleteGroupPermissionButton->setObjectName("deleteGroupPermissionButton");
-        sizePolicy4.setHeightForWidth(deleteGroupPermissionButton->sizePolicy().hasHeightForWidth());
-        deleteGroupPermissionButton->setSizePolicy(sizePolicy4);
-        deleteGroupPermissionButton->setMinimumSize(QSize(75, 51));
-        deleteGroupPermissionButton->setMaximumSize(QSize(75, 51));
-        deleteGroupPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
-"	color: white;\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
+        editGroupPermissionButton = new QPushButton(groupPage);
+        editGroupPermissionButton->setObjectName("editGroupPermissionButton");
+        sizePolicy4.setHeightForWidth(editGroupPermissionButton->sizePolicy().hasHeightForWidth());
+        editGroupPermissionButton->setSizePolicy(sizePolicy4);
+        editGroupPermissionButton->setMinimumSize(QSize(85, 51));
+        editGroupPermissionButton->setMaximumSize(QSize(85, 51));
+        editGroupPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #5a90c6; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
+"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout_4->addWidget(deleteGroupPermissionButton, 0, 5, 1, 1);
+        gridLayout_4->addWidget(editGroupPermissionButton, 0, 4, 1, 1);
+
+        horizontalSpacer_7 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer_7, 0, 0, 1, 1);
 
         addGroupButton = new QPushButton(groupPage);
         addGroupButton->setObjectName("addGroupButton");
@@ -485,13 +446,13 @@ public:
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_4->addWidget(addGroupButton, 0, 1, 1, 1);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_8, 0, 8, 1, 1);
 
         groupTableView = new QTableView(groupPage);
         groupTableView->setObjectName("groupTableView");
@@ -519,7 +480,29 @@ public:
 ""));
         groupTableView->verticalHeader()->setVisible(false);
 
-        gridLayout_4->addWidget(groupTableView, 1, 1, 1, 8);
+        gridLayout_4->addWidget(groupTableView, 1, 1, 1, 6);
+
+        deleteGroupButton = new QPushButton(groupPage);
+        deleteGroupButton->setObjectName("deleteGroupButton");
+        sizePolicy4.setHeightForWidth(deleteGroupButton->sizePolicy().hasHeightForWidth());
+        deleteGroupButton->setSizePolicy(sizePolicy4);
+        deleteGroupButton->setMinimumSize(QSize(75, 51));
+        deleteGroupButton->setMaximumSize(QSize(75, 51));
+        deleteGroupButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
+"	color: white;\n"
+"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color:#df4d4d; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\272\242\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"}"));
+
+        gridLayout_4->addWidget(deleteGroupButton, 0, 2, 1, 1);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer_8, 0, 6, 1, 1);
 
         stackedWidget->addWidget(groupPage);
         functionPage = new QWidget();
@@ -530,13 +513,17 @@ public:
         editFunctionPermissionButton->setObjectName("editFunctionPermissionButton");
         sizePolicy4.setHeightForWidth(editFunctionPermissionButton->sizePolicy().hasHeightForWidth());
         editFunctionPermissionButton->setSizePolicy(sizePolicy4);
-        editFunctionPermissionButton->setMinimumSize(QSize(75, 51));
-        editFunctionPermissionButton->setMaximumSize(QSize(75, 51));
+        editFunctionPermissionButton->setMinimumSize(QSize(85, 51));
+        editFunctionPermissionButton->setMaximumSize(QSize(85, 51));
         editFunctionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    background-color: #5a90c6; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_5->addWidget(editFunctionPermissionButton, 0, 4, 1, 1);
@@ -586,6 +573,10 @@ public:
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_5->addWidget(addFunctionButton, 0, 1, 1, 1);
@@ -601,6 +592,10 @@ public:
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_5->addWidget(editFunctionButton, 0, 3, 1, 1);
@@ -615,6 +610,10 @@ public:
 "    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
 "	color: white;\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color:#df4d4d; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\272\242\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_5->addWidget(deleteFunctionButton, 0, 2, 1, 1);
@@ -623,13 +622,17 @@ public:
         searchFunctionPermissionButton->setObjectName("searchFunctionPermissionButton");
         sizePolicy2.setHeightForWidth(searchFunctionPermissionButton->sizePolicy().hasHeightForWidth());
         searchFunctionPermissionButton->setSizePolicy(sizePolicy2);
-        searchFunctionPermissionButton->setMinimumSize(QSize(141, 51));
-        searchFunctionPermissionButton->setMaximumSize(QSize(141, 51));
+        searchFunctionPermissionButton->setMinimumSize(QSize(85, 51));
+        searchFunctionPermissionButton->setMaximumSize(QSize(85, 51));
         searchFunctionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #71ad6b; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\273\277\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_5->addWidget(searchFunctionPermissionButton, 0, 5, 1, 1);
@@ -639,25 +642,6 @@ public:
         permissionPage->setObjectName("permissionPage");
         gridLayout_6 = new QGridLayout(permissionPage);
         gridLayout_6->setObjectName("gridLayout_6");
-        addPermissionPermissionButton = new QPushButton(permissionPage);
-        addPermissionPermissionButton->setObjectName("addPermissionPermissionButton");
-        sizePolicy4.setHeightForWidth(addPermissionPermissionButton->sizePolicy().hasHeightForWidth());
-        addPermissionPermissionButton->setSizePolicy(sizePolicy4);
-        addPermissionPermissionButton->setMinimumSize(QSize(75, 51));
-        addPermissionPermissionButton->setMaximumSize(QSize(75, 51));
-        addPermissionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #3284e8; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
-"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"}"));
-
-        gridLayout_6->addWidget(addPermissionPermissionButton, 0, 4, 1, 1);
-
         addPermissionButton = new QPushButton(permissionPage);
         addPermissionButton->setObjectName("addPermissionButton");
         sizePolicy4.setHeightForWidth(addPermissionButton->sizePolicy().hasHeightForWidth());
@@ -699,6 +683,10 @@ public:
 
         gridLayout_6->addWidget(editPermissionButton, 0, 3, 1, 1);
 
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_6->addItem(horizontalSpacer_12, 0, 6, 1, 1);
+
         deletePermissionButton = new QPushButton(permissionPage);
         deletePermissionButton->setObjectName("deletePermissionButton");
         sizePolicy4.setHeightForWidth(deletePermissionButton->sizePolicy().hasHeightForWidth());
@@ -717,30 +705,14 @@ public:
 
         gridLayout_6->addWidget(deletePermissionButton, 0, 2, 1, 1);
 
-        deletePermissionPermissionButton = new QPushButton(permissionPage);
-        deletePermissionPermissionButton->setObjectName("deletePermissionPermissionButton");
-        deletePermissionPermissionButton->setMinimumSize(QSize(75, 51));
-        deletePermissionPermissionButton->setMaximumSize(QSize(75, 51));
-        deletePermissionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
-"	color: white;\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color:#df4d4d; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\272\242\350\211\262 */\n"
-"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"}"));
-
-        gridLayout_6->addWidget(deletePermissionPermissionButton, 0, 5, 1, 1);
-
         editPermissionPermissionButton = new QPushButton(permissionPage);
         editPermissionPermissionButton->setObjectName("editPermissionPermissionButton");
         sizePolicy4.setHeightForWidth(editPermissionPermissionButton->sizePolicy().hasHeightForWidth());
         editPermissionPermissionButton->setSizePolicy(sizePolicy4);
-        editPermissionPermissionButton->setMinimumSize(QSize(75, 51));
-        editPermissionPermissionButton->setMaximumSize(QSize(75, 51));
+        editPermissionPermissionButton->setMinimumSize(QSize(85, 51));
+        editPermissionPermissionButton->setMaximumSize(QSize(85, 51));
         editPermissionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    background-color: #5a90c6; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
@@ -750,34 +722,11 @@ public:
 "	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout_6->addWidget(editPermissionPermissionButton, 0, 6, 1, 1);
+        gridLayout_6->addWidget(editPermissionPermissionButton, 0, 4, 1, 1);
 
         horizontalSpacer_11 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
 
         gridLayout_6->addItem(horizontalSpacer_11, 0, 0, 1, 1);
-
-        searchPermissionPermissionButton = new QPushButton(permissionPage);
-        searchPermissionPermissionButton->setObjectName("searchPermissionPermissionButton");
-        sizePolicy4.setHeightForWidth(searchPermissionPermissionButton->sizePolicy().hasHeightForWidth());
-        searchPermissionPermissionButton->setSizePolicy(sizePolicy4);
-        searchPermissionPermissionButton->setMinimumSize(QSize(85, 51));
-        searchPermissionPermissionButton->setMaximumSize(QSize(85, 51));
-        searchPermissionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\273\277\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: #71ad6b; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\273\277\350\211\262 */\n"
-"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"}"));
-
-        gridLayout_6->addWidget(searchPermissionPermissionButton, 0, 7, 1, 1);
-
-        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_6->addItem(horizontalSpacer_12, 0, 8, 1, 1);
 
         permissionTableView = new QTableView(permissionPage);
         permissionTableView->setObjectName("permissionTableView");
@@ -803,7 +752,26 @@ public:
         permissionTableView->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
         permissionTableView->verticalHeader()->setVisible(false);
 
-        gridLayout_6->addWidget(permissionTableView, 1, 1, 1, 8);
+        gridLayout_6->addWidget(permissionTableView, 1, 1, 1, 6);
+
+        searchPermissionPermissionButton = new QPushButton(permissionPage);
+        searchPermissionPermissionButton->setObjectName("searchPermissionPermissionButton");
+        sizePolicy4.setHeightForWidth(searchPermissionPermissionButton->sizePolicy().hasHeightForWidth());
+        searchPermissionPermissionButton->setSizePolicy(sizePolicy4);
+        searchPermissionPermissionButton->setMinimumSize(QSize(85, 51));
+        searchPermissionPermissionButton->setMaximumSize(QSize(85, 51));
+        searchPermissionPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\273\277\350\211\262 */\n"
+"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
+"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #71ad6b; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\273\277\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"}"));
+
+        gridLayout_6->addWidget(searchPermissionPermissionButton, 0, 5, 1, 1);
 
         stackedWidget->addWidget(permissionPage);
         userPage = new QWidget();
@@ -827,16 +795,16 @@ public:
 "	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout->addWidget(editUserButton, 0, 5, 1, 1);
+        gridLayout->addWidget(editUserButton, 0, 3, 1, 1);
 
         editUserPermissionButton = new QPushButton(userPage);
         editUserPermissionButton->setObjectName("editUserPermissionButton");
         sizePolicy4.setHeightForWidth(editUserPermissionButton->sizePolicy().hasHeightForWidth());
         editUserPermissionButton->setSizePolicy(sizePolicy4);
-        editUserPermissionButton->setMinimumSize(QSize(75, 51));
-        editUserPermissionButton->setMaximumSize(QSize(75, 51));
+        editUserPermissionButton->setMinimumSize(QSize(85, 51));
+        editUserPermissionButton->setMaximumSize(QSize(85, 51));
         editUserPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    background-color: #5a90c6; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
@@ -846,13 +814,15 @@ public:
 "	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout->addWidget(editUserPermissionButton, 0, 6, 1, 1);
+        gridLayout->addWidget(editUserPermissionButton, 0, 4, 1, 1);
 
-        deleteUserPermissionButton = new QPushButton(userPage);
-        deleteUserPermissionButton->setObjectName("deleteUserPermissionButton");
-        deleteUserPermissionButton->setMinimumSize(QSize(75, 51));
-        deleteUserPermissionButton->setMaximumSize(QSize(75, 51));
-        deleteUserPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+        deleteUserButton = new QPushButton(userPage);
+        deleteUserButton->setObjectName("deleteUserButton");
+        sizePolicy4.setHeightForWidth(deleteUserButton->sizePolicy().hasHeightForWidth());
+        deleteUserButton->setSizePolicy(sizePolicy4);
+        deleteUserButton->setMinimumSize(QSize(75, 51));
+        deleteUserButton->setMaximumSize(QSize(75, 51));
+        deleteUserButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
 "	color: white;\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
@@ -862,7 +832,34 @@ public:
 "	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout->addWidget(deleteUserPermissionButton, 0, 4, 1, 1);
+        gridLayout->addWidget(deleteUserButton, 0, 2, 1, 1);
+
+        horizontalSpacer_4 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_4, 0, 0, 1, 1);
+
+        ViewLogsButton = new QPushButton(userPage);
+        ViewLogsButton->setObjectName("ViewLogsButton");
+        sizePolicy4.setHeightForWidth(ViewLogsButton->sizePolicy().hasHeightForWidth());
+        ViewLogsButton->setSizePolicy(sizePolicy4);
+        ViewLogsButton->setMinimumSize(QSize(85, 51));
+        ViewLogsButton->setMaximumSize(QSize(85, 51));
+        ViewLogsButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
+"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #71ad6b; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\273\277\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"}"));
+
+        gridLayout->addWidget(ViewLogsButton, 0, 6, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 7, 1, 1);
 
         addUserButton = new QPushButton(userPage);
         addUserButton->setObjectName("addUserButton");
@@ -884,14 +881,14 @@ public:
 
         gridLayout->addWidget(addUserButton, 0, 1, 1, 1);
 
-        ViewLogsButton = new QPushButton(userPage);
-        ViewLogsButton->setObjectName("ViewLogsButton");
-        sizePolicy4.setHeightForWidth(ViewLogsButton->sizePolicy().hasHeightForWidth());
-        ViewLogsButton->setSizePolicy(sizePolicy4);
-        ViewLogsButton->setMinimumSize(QSize(90, 51));
-        ViewLogsButton->setMaximumSize(QSize(90, 51));
-        ViewLogsButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+        searchUserPermissionButton = new QPushButton(userPage);
+        searchUserPermissionButton->setObjectName("searchUserPermissionButton");
+        sizePolicy4.setHeightForWidth(searchUserPermissionButton->sizePolicy().hasHeightForWidth());
+        searchUserPermissionButton->setSizePolicy(sizePolicy4);
+        searchUserPermissionButton->setMinimumSize(QSize(85, 51));
+        searchUserPermissionButton->setMaximumSize(QSize(85, 51));
+        searchUserPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\273\277\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
@@ -901,44 +898,7 @@ public:
 "	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout->addWidget(ViewLogsButton, 0, 8, 1, 1);
-
-        deleteUserButton = new QPushButton(userPage);
-        deleteUserButton->setObjectName("deleteUserButton");
-        sizePolicy4.setHeightForWidth(deleteUserButton->sizePolicy().hasHeightForWidth());
-        deleteUserButton->setSizePolicy(sizePolicy4);
-        deleteUserButton->setMinimumSize(QSize(75, 51));
-        deleteUserButton->setMaximumSize(QSize(75, 51));
-        deleteUserButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
-"	color: white;\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color:#df4d4d; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\272\242\350\211\262 */\n"
-"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"}"));
-
-        gridLayout->addWidget(deleteUserButton, 0, 3, 1, 1);
-
-        addUserPermissionButton = new QPushButton(userPage);
-        addUserPermissionButton->setObjectName("addUserPermissionButton");
-        sizePolicy4.setHeightForWidth(addUserPermissionButton->sizePolicy().hasHeightForWidth());
-        addUserPermissionButton->setSizePolicy(sizePolicy4);
-        addUserPermissionButton->setMinimumSize(QSize(75, 51));
-        addUserPermissionButton->setMaximumSize(QSize(75, 51));
-        addUserPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #3284e8; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
-"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"}"));
-
-        gridLayout->addWidget(addUserPermissionButton, 0, 2, 1, 1);
+        gridLayout->addWidget(searchUserPermissionButton, 0, 5, 1, 1);
 
         userTableView = new QTableView(userPage);
         userTableView->setObjectName("userTableView");
@@ -965,16 +925,25 @@ public:
         userTableView->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
         userTableView->verticalHeader()->setVisible(false);
 
-        gridLayout->addWidget(userTableView, 1, 1, 1, 9);
+        gridLayout->addWidget(userTableView, 1, 1, 1, 7);
 
-        searchUserPermissionButton = new QPushButton(userPage);
-        searchUserPermissionButton->setObjectName("searchUserPermissionButton");
-        sizePolicy4.setHeightForWidth(searchUserPermissionButton->sizePolicy().hasHeightForWidth());
-        searchUserPermissionButton->setSizePolicy(sizePolicy4);
-        searchUserPermissionButton->setMinimumSize(QSize(85, 51));
-        searchUserPermissionButton->setMaximumSize(QSize(85, 51));
-        searchUserPermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\273\277\350\211\262 */\n"
+        stackedWidget->addWidget(userPage);
+        rolePage = new QWidget();
+        rolePage->setObjectName("rolePage");
+        gridLayout_2 = new QGridLayout(rolePage);
+        gridLayout_2->setObjectName("gridLayout_2");
+        horizontalSpacer_5 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_5, 0, 0, 1, 1);
+
+        searchRolePermissionButton = new QPushButton(rolePage);
+        searchRolePermissionButton->setObjectName("searchRolePermissionButton");
+        sizePolicy4.setHeightForWidth(searchRolePermissionButton->sizePolicy().hasHeightForWidth());
+        searchRolePermissionButton->setSizePolicy(sizePolicy4);
+        searchRolePermissionButton->setMinimumSize(QSize(85, 51));
+        searchRolePermissionButton->setMaximumSize(QSize(85, 51));
+        searchRolePermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
@@ -984,94 +953,26 @@ public:
 "	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout->addWidget(searchUserPermissionButton, 0, 7, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 0, 9, 1, 1);
-
-        horizontalSpacer_4 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_4, 0, 0, 1, 1);
-
-        stackedWidget->addWidget(userPage);
-        rolePage = new QWidget();
-        rolePage->setObjectName("rolePage");
-        gridLayout_2 = new QGridLayout(rolePage);
-        gridLayout_2->setObjectName("gridLayout_2");
-        searchRolePermissionButton = new QPushButton(rolePage);
-        searchRolePermissionButton->setObjectName("searchRolePermissionButton");
-        sizePolicy4.setHeightForWidth(searchRolePermissionButton->sizePolicy().hasHeightForWidth());
-        searchRolePermissionButton->setSizePolicy(sizePolicy4);
-        searchRolePermissionButton->setMinimumSize(QSize(161, 51));
-        searchRolePermissionButton->setMaximumSize(QSize(161, 51));
-        searchRolePermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#8bd583; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}"));
-
-        gridLayout_2->addWidget(searchRolePermissionButton, 0, 7, 1, 1);
-
-        deleteRolePermissionButton = new QPushButton(rolePage);
-        deleteRolePermissionButton->setObjectName("deleteRolePermissionButton");
-        sizePolicy4.setHeightForWidth(deleteRolePermissionButton->sizePolicy().hasHeightForWidth());
-        deleteRolePermissionButton->setSizePolicy(sizePolicy4);
-        deleteRolePermissionButton->setMinimumSize(QSize(75, 51));
-        deleteRolePermissionButton->setMaximumSize(QSize(75, 51));
-        deleteRolePermissionButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
-"	color: white;\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
-"}"));
-
-        gridLayout_2->addWidget(deleteRolePermissionButton, 0, 5, 1, 1);
-
-        editRoleButton = new QPushButton(rolePage);
-        editRoleButton->setObjectName("editRoleButton");
-        sizePolicy4.setHeightForWidth(editRoleButton->sizePolicy().hasHeightForWidth());
-        editRoleButton->setSizePolicy(sizePolicy4);
-        editRoleButton->setMinimumSize(QSize(75, 51));
-        editRoleButton->setMaximumSize(QSize(75, 51));
-        editRoleButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}"));
-
-        gridLayout_2->addWidget(editRoleButton, 0, 3, 1, 1);
-
-        addRolePermissionButton = new QPushButton(rolePage);
-        addRolePermissionButton->setObjectName("addRolePermissionButton");
-        sizePolicy4.setHeightForWidth(addRolePermissionButton->sizePolicy().hasHeightForWidth());
-        addRolePermissionButton->setSizePolicy(sizePolicy4);
-        addRolePermissionButton->setMinimumSize(QSize(75, 51));
-        addRolePermissionButton->setMaximumSize(QSize(75, 51));
-        addRolePermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color:#3284e8; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
-"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
-"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
-"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
-"}"));
-
-        gridLayout_2->addWidget(addRolePermissionButton, 0, 4, 1, 1);
+        gridLayout_2->addWidget(searchRolePermissionButton, 0, 5, 1, 1);
 
         editRolePermissionButton = new QPushButton(rolePage);
         editRolePermissionButton->setObjectName("editRolePermissionButton");
         sizePolicy4.setHeightForWidth(editRolePermissionButton->sizePolicy().hasHeightForWidth());
         editRolePermissionButton->setSizePolicy(sizePolicy4);
-        editRolePermissionButton->setMinimumSize(QSize(75, 51));
-        editRolePermissionButton->setMaximumSize(QSize(75, 51));
+        editRolePermissionButton->setMinimumSize(QSize(85, 51));
+        editRolePermissionButton->setMaximumSize(QSize(85, 51));
         editRolePermissionButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    background-color: #5a90c6; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
-        gridLayout_2->addWidget(editRolePermissionButton, 0, 6, 1, 1);
+        gridLayout_2->addWidget(editRolePermissionButton, 0, 4, 1, 1);
 
         deleteRoleButton = new QPushButton(rolePage);
         deleteRoleButton->setObjectName("deleteRoleButton");
@@ -1083,13 +984,13 @@ public:
 "    background-color: #ff5858; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\347\272\242\350\211\262 */\n"
 "	color: white;\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222\357\274\210\345\217\257\351\200\211\357\274\211 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color:#df4d4d; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\347\272\242\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_2->addWidget(deleteRoleButton, 0, 2, 1, 1);
-
-        horizontalSpacer_5 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout_2->addItem(horizontalSpacer_5, 0, 0, 1, 1);
 
         addRoleButton = new QPushButton(rolePage);
         addRoleButton->setObjectName("addRoleButton");
@@ -1102,13 +1003,36 @@ public:
 "    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
 "    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
 "}"));
 
         gridLayout_2->addWidget(addRoleButton, 0, 1, 1, 1);
 
+        editRoleButton = new QPushButton(rolePage);
+        editRoleButton->setObjectName("editRoleButton");
+        sizePolicy4.setHeightForWidth(editRoleButton->sizePolicy().hasHeightForWidth());
+        editRoleButton->setSizePolicy(sizePolicy4);
+        editRoleButton->setMinimumSize(QSize(75, 51));
+        editRoleButton->setMaximumSize(QSize(75, 51));
+        editRoleButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #74b7ff; /* \350\256\276\347\275\256\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\350\223\235\350\211\262 */\n"
+"    color: white; /* \350\256\276\347\275\256\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"	border: none; /* \345\217\226\346\266\210\346\214\211\351\222\256\347\232\204\350\276\271\346\241\206 */\n"
+"    border-radius: 5px; /* \346\214\211\351\222\256\345\234\206\350\247\222 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: #1a65d3; /* \346\202\254\345\201\234\346\227\266\350\203\214\346\231\257\351\242\234\350\211\262\344\270\272\346\267\261\350\223\235\350\211\262 */\n"
+"	color: white; /* \346\202\254\345\201\234\346\227\266\346\226\207\345\255\227\351\242\234\350\211\262\344\270\272\347\231\275\350\211\262 */\n"
+"}"));
+
+        gridLayout_2->addWidget(editRoleButton, 0, 3, 1, 1);
+
         horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_2->addItem(horizontalSpacer_6, 0, 8, 1, 1);
+        gridLayout_2->addItem(horizontalSpacer_6, 0, 6, 1, 1);
 
         roleTableView = new QTableView(rolePage);
         roleTableView->setObjectName("roleTableView");
@@ -1134,7 +1058,7 @@ public:
 ""));
         roleTableView->verticalHeader()->setVisible(false);
 
-        gridLayout_2->addWidget(roleTableView, 1, 1, 1, 8);
+        gridLayout_2->addWidget(roleTableView, 1, 1, 1, 6);
 
         stackedWidget->addWidget(rolePage);
 
@@ -1169,40 +1093,32 @@ public:
         functionButton->setText(QCoreApplication::translate("Permissions", "\345\212\237\350\203\275\347\256\241\347\220\206", nullptr));
         permissionButton->setText(QCoreApplication::translate("Permissions", "\346\235\203\351\231\220\347\256\241\347\220\206", nullptr));
         usernameLabel->setText(QCoreApplication::translate("Permissions", "Username", nullptr));
-        searchGroupPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\346\211\276\347\273\204\346\235\203\351\231\220", nullptr));
-        editGroupPermissionButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\346\235\203\351\231\220", nullptr));
-        deleteGroupButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\347\273\204", nullptr));
         editGroupButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\347\273\204", nullptr));
-        addGroupPermissionButton->setText(QCoreApplication::translate("Permissions", "\345\242\236\345\212\240\346\235\203\351\231\220", nullptr));
-        deleteGroupPermissionButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\346\235\203\351\231\220", nullptr));
+        searchGroupPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\346\211\276\347\273\204\346\235\203\351\231\220", nullptr));
+        editGroupPermissionButton->setText(QCoreApplication::translate("Permissions", "\347\274\226\350\276\221\347\273\204\346\235\203\351\231\220", nullptr));
         addGroupButton->setText(QCoreApplication::translate("Permissions", "\345\242\236\345\212\240\347\273\204", nullptr));
+        deleteGroupButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\347\273\204", nullptr));
         editFunctionPermissionButton->setText(QCoreApplication::translate("Permissions", "\350\256\276\347\275\256\345\212\237\350\203\275\346\235\203\351\231\220", nullptr));
         addFunctionButton->setText(QCoreApplication::translate("Permissions", "\346\267\273\345\212\240\345\212\237\350\203\275", nullptr));
         editFunctionButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\345\212\237\350\203\275", nullptr));
         deleteFunctionButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\345\212\237\350\203\275", nullptr));
         searchFunctionPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\346\211\276\345\212\237\350\203\275\346\235\203\351\231\220", nullptr));
-        addPermissionPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\235\203\351\231\220\351\205\215\347\275\256", nullptr));
         addPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\267\273\345\212\240\346\235\203\351\231\220", nullptr));
         editPermissionButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\346\235\203\351\231\220", nullptr));
         deletePermissionButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\346\235\203\351\231\220", nullptr));
-        deletePermissionPermissionButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\345\205\263\350\201\224", nullptr));
-        editPermissionPermissionButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\345\205\263\350\201\224", nullptr));
+        editPermissionPermissionButton->setText(QCoreApplication::translate("Permissions", "\347\274\226\350\276\221\346\235\203\351\231\220\345\205\263\350\201\224", nullptr));
         searchPermissionPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\346\211\276\346\235\203\351\231\220\345\205\263\350\201\224", nullptr));
         editUserButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\347\224\250\346\210\267", nullptr));
-        editUserPermissionButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\346\235\203\351\231\220", nullptr));
-        deleteUserPermissionButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\346\235\203\351\231\220", nullptr));
-        addUserButton->setText(QCoreApplication::translate("Permissions", "\346\267\273\345\212\240\347\224\250\346\210\267", nullptr));
-        ViewLogsButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\347\234\213\346\223\215\344\275\234\346\227\245\345\277\227", nullptr));
+        editUserPermissionButton->setText(QCoreApplication::translate("Permissions", "\347\274\226\350\276\221\347\224\250\346\210\267\346\235\203\351\231\220", nullptr));
         deleteUserButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\347\224\250\346\210\267", nullptr));
-        addUserPermissionButton->setText(QCoreApplication::translate("Permissions", "\345\210\206\351\205\215\346\235\203\351\231\220", nullptr));
+        ViewLogsButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\347\234\213\346\223\215\344\275\234\346\227\245\345\277\227", nullptr));
+        addUserButton->setText(QCoreApplication::translate("Permissions", "\346\267\273\345\212\240\347\224\250\346\210\267", nullptr));
         searchUserPermissionButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\346\211\276\347\224\250\346\210\267\346\235\203\351\231\220", nullptr));
         searchRolePermissionButton->setText(QCoreApplication::translate("Permissions", "\346\237\245\346\211\276\350\247\222\350\211\262\346\235\203\351\231\220", nullptr));
-        deleteRolePermissionButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\346\235\203\351\231\220", nullptr));
-        editRoleButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\350\247\222\350\211\262", nullptr));
-        addRolePermissionButton->setText(QCoreApplication::translate("Permissions", "\346\267\273\345\212\240\346\235\203\351\231\220", nullptr));
-        editRolePermissionButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\346\235\203\351\231\220", nullptr));
+        editRolePermissionButton->setText(QCoreApplication::translate("Permissions", "\347\274\226\350\276\221\350\247\222\350\211\262\346\235\203\351\231\220", nullptr));
         deleteRoleButton->setText(QCoreApplication::translate("Permissions", "\345\210\240\351\231\244\350\247\222\350\211\262", nullptr));
         addRoleButton->setText(QCoreApplication::translate("Permissions", "\346\267\273\345\212\240\350\247\222\350\211\262", nullptr));
+        editRoleButton->setText(QCoreApplication::translate("Permissions", "\344\277\256\346\224\271\350\247\222\350\211\262", nullptr));
     } // retranslateUi
 
 };
