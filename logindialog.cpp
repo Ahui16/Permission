@@ -19,20 +19,18 @@ LoginDialog::LoginDialog(QWidget *parent) :
         qDebug() << "Database successfully opened at path:" << dbPath;
     }
 }
-
 LoginDialog::~LoginDialog()
 {
     delete ui;
     db.close();
 }
-
 void LoginDialog::loginButton()
 {
     QString username = ui->UsernamelineEdit->text().trimmed();
     QString password = ui->PasswordlineEdit->text().trimmed();
 
     if (username.isEmpty() || password.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "用户名和密码不能为空！");
+        QMessageBox::warning(this, "Input Error", "用户名和密码不能为空");
         return;
     }
 
@@ -132,7 +130,7 @@ void LoginDialog::registerButton()
         query.bindValue(":name", name);
 
         if (!query.exec()) {
-            QMessageBox::warning(&dialog, "Register Error", "用户名已存在！");
+            QMessageBox::warning(&dialog, "Register Error", "用户名已存在");
         } else {
             QMessageBox::information(&dialog, "Register Success", "注册成功！");
             QSqlQuery query;

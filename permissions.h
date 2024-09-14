@@ -103,8 +103,6 @@ private:
     void showGroupPage();
     void showFunctionPage();
     void showPermissionPage();
-    void writeLog(const int &id, const QString &username, const QString &functionName,
-                  const QString &result, const QString &actions, const QString &description = "");
     void Menu();
 };
 
